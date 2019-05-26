@@ -13,6 +13,7 @@ namespace ClassFour
     public partial class ListForm : Form
     {
         List<int> numbers = new List<int>();
+        List<string> names = new List<string>();
         public ListForm()
         {
             InitializeComponent();
@@ -22,14 +23,20 @@ namespace ClassFour
         {
             
             numbers.Add(Convert.ToInt32(inputTextBox.Text));
-            
+            names.Add(nameTextBox.Text);
             string message = "Foreach\n";
-            
+            int index = 0;
             foreach (int number in numbers)
             {
-                message = message + number + "\n";
+                message = message + names[index]+":"+number + "\n";
+                index++;
             }
             showRichTextBox.Text = message;
+        }
+
+        private void inputTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

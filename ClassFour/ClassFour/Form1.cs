@@ -24,11 +24,9 @@ namespace ClassFour
         {
             number[index] = Convert.ToInt32(inputTextBox.Text);
             index++;
-            outputRichTextBox.Text = Show();
-
+            outputRichTextBox.Text = Show("Add");
         }
-
-        string Show()
+        string Show(string name)
         {
             string message = "";
             for (int index=0;index<number.Length;index++)
@@ -36,7 +34,7 @@ namespace ClassFour
                 if (number[index] != 0)
                     message = message + number[index].ToString() + "\n";
             }
-            return message;
+            return name+":"+message;
         }
     }
 }

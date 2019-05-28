@@ -29,7 +29,7 @@ namespace TryCatch
                 int age = 0;
                 userLabel.Text = "";
 
-                if (userExist(userTextBox.Text)== true)
+                if (userExist(userTextBox.Text))
                 {
                     userLabel.Text = "User already exist";
                     return;
@@ -83,4 +83,6 @@ namespace TryCatch
             return isExist;
         }
     }
+
+
 }

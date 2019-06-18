@@ -89,9 +89,6 @@
     <Compile Include="ListForm.Designer.cs">
       <DependentUpon>ListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\District.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentUi.cs">
@@ -134,9 +131,6 @@
     <EmbeddedResource Include="StudentUi.resx">
       <DependentUpon>StudentUi.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\MyWinApp.Models.District.datasource" />
-    <None Include="Properties\DataSources\MyWinApp.Models.Student.datasource" />
-    <None Include="Properties\DataSources\MyWinApp.Models.Test.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -10,21 +10,16 @@ using System.Windows.Forms;
 
 namespace MyWinApp
 {
-    public partial class Form1 : Form
+    public partial class GitForm : Form
     {
-        public Form1()
+        public GitForm()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void NameButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void showButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hello " + nameTextBox.Text + " ,You are " + itemComboBox.Text);
+            MessageBox.Show(firstNameTextBox.Text +" "+ lastNameTextBox.Text);
         }
     }
 }

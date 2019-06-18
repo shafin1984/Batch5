@@ -1,6 +1,6 @@
 ﻿namespace MyWinApp
 {
-    partial class Form1
+    partial class HomeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,72 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.showButton = new System.Windows.Forms.Button();
+            this.ShowButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.itemComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.showTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // showButton
+            // ShowButton
             // 
-            this.showButton.Location = new System.Drawing.Point(600, 76);
-            this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(75, 23);
-            this.showButton.TabIndex = 0;
-            this.showButton.Text = "show";
-            this.showButton.UseVisualStyleBackColor = true;
-            this.showButton.Click += new System.EventHandler(this.showButton_Click);
+            this.ShowButton.Location = new System.Drawing.Point(611, 41);
+            this.ShowButton.Name = "ShowButton";
+            this.ShowButton.Size = new System.Drawing.Size(75, 23);
+            this.ShowButton.TabIndex = 0;
+            this.ShowButton.Text = "Show";
+            this.ShowButton.UseVisualStyleBackColor = true;
+            this.ShowButton.Click += new System.EventHandler(this.ShowButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 79);
+            this.label1.Location = new System.Drawing.Point(77, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(207, 79);
+            this.nameTextBox.Location = new System.Drawing.Point(159, 60);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(121, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(100, 20);
             this.nameTextBox.TabIndex = 2;
             // 
             // itemComboBox
             // 
             this.itemComboBox.FormattingEnabled = true;
             this.itemComboBox.Items.AddRange(new object[] {
-            "Man",
-            "Women"});
-            this.itemComboBox.Location = new System.Drawing.Point(207, 129);
+            "Pen",
+            "Pencil"});
+            this.itemComboBox.Location = new System.Drawing.Point(159, 98);
             this.itemComboBox.Name = "itemComboBox";
             this.itemComboBox.Size = new System.Drawing.Size(121, 21);
             this.itemComboBox.TabIndex = 3;
             // 
-            // label2
+            // showTextBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(137, 129);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Gender";
+            this.showTextBox.Location = new System.Drawing.Point(233, 205);
+            this.showTextBox.Name = "showTextBox";
+            this.showTextBox.Size = new System.Drawing.Size(306, 20);
+            this.showTextBox.TabIndex = 4;
             // 
-            // Form1
+            // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.showTextBox);
             this.Controls.Add(this.itemComboBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.showButton);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.ShowButton);
+            this.Name = "HomeForm";
+            this.Text = "Home";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,11 +98,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button showButton;
+        private System.Windows.Forms.Button ShowButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.ComboBox itemComboBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox showTextBox;
     }
 }
 

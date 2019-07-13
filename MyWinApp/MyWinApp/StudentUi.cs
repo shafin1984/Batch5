@@ -14,7 +14,7 @@ namespace MyWinApp
 {
     public partial class StudentUi : Form
     {
-        string connectionString = @"Server=PC-301-04\SQLEXPRESS; Database=StudentDB; Integrated Security=True";
+        string connectionString = @"Server=DESKTOP-IOCVPPE\SQLEXPRESS; Database=StudentDB; Integrated Security=True";
         private SqlConnection sqlConnection;
 
         private string commandString;
@@ -30,7 +30,8 @@ namespace MyWinApp
         private void StudentUi_Load(object sender, EventArgs e)
         {
             LoadDistrict();
-            districtComboBox.SelectedIndex = -1;
+            //districtComboBox.SelectedIndex = -1;
+            districtComboBox.Text = "-----Select-----";
             LoadTest();
         }
 

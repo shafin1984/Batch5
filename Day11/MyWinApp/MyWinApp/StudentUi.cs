@@ -15,11 +15,7 @@ namespace MyWinApp
 {
     public partial class StudentUi : Form
     {
-        //string connectionString = @"Server=PC-301-04\SQLEXPRESS; Database=StudentDB; Integrated Security=True";
-        //private SqlConnection sqlConnection;
-
-        //private string commandString;
-        //private SqlCommand sqlCommand;
+  
         private Student student;
 
         StudentManager _studentManager = new StudentManager(); 
@@ -27,7 +23,6 @@ namespace MyWinApp
         public StudentUi()
         {
             InitializeComponent();
-           // sqlConnection = new SqlConnection(connectionString);
             student = new Student();
         }
 
@@ -36,37 +31,32 @@ namespace MyWinApp
             districtComboBox.DataSource=_studentManager.LoadDistrict();
         }
 
-        //private void LoadDistrict()
-        //{
-        //    commandString = @"SELECT * FROM Districts";
-        //    sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-        //    sqlConnection.Open();
-
-        //    //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-        //    //sqlDataAdapter.SelectCommand = sqlCommand;
-
-        //    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-        //    DataTable dataTable = new DataTable();
-        //    sqlDataAdapter.Fill(dataTable);
-
-        //    if(dataTable.Rows.Count>0)
-        //        districtComboBox.DataSource = dataTable;
-
-        //    sqlConnection.Close();
-        //}
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            student.RollNo = rollNoTextBox.Text;
-            student.Name = nameTextBox.Text;
-            student.Age = Convert.ToInt32(ageTextBox.Text);
-            student.Address = addressTextBox.Text;
-            student.DistrictID = Convert.ToInt32(districtComboBox.SelectedValue);
+            try
+            {
+                int i;
+                if (string.IsNullOrEmpty(rollNoTextBox.Text))
+                { MessageBox.Show("Roll can not be blank"); return; }
+                else student.RollNo = rollNoTextBox.Text;
+                student.Name = nameTextBox.Text;
+                int digitCount = ageTextBox.Text.Length;
+                if (digitCount == 3)
+                {
+                    bool success = Int32.TryParse(ageTextBox.Text, out i);
+                    if (success)
+                    {
+                        student.Age = Convert.ToInt32(ageTextBox.Text);
+                    }
 
-            //displayDataGridView.DataSource=_studentManager.SearchStudents(student)
-            //    if (dataTable.Rows.Count > 0)
-            
+                    else
+                    { MessageBox.Show("Pls input integar value"); return; }
+                }
+                else
+                { MessageBox.Show("Pls input three integar"); return; }
+
+                student.Address = addressTextBox.Text;
+                student.DistrictID = Convert.ToInt32(districtComboBox.SelectedValue);
 
                 int isExecuted = _studentManager.InsertStudent(student);
                 if (isExecuted > 0)
@@ -77,26 +67,12 @@ namespace MyWinApp
                 {
                     MessageBox.Show("exist");
                 }
-            
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
-        //private void InsertStudent(Student student)
-        //{
-        //    commandString = @"INSERT INTO Students (RollNo, Name, Age, Address, DistrictID) VALUES ('"+student.RollNo+"', '"+ student.Name+ "', "+student.Age+", '"+ student.Address + "',"+ student .DistrictID+ ")";
-        //    sqlCommand =  new SqlCommand(commandString, sqlConnection);
-
-        //    sqlConnection.Open();
-        //    int isExecuted;
-        //    isExecuted = sqlCommand.ExecuteNonQuery();
-        //    if (isExecuted>0)
-        //    {
-        //        MessageBox.Show("Saved");
-        //    }else
-        //    {
-        //        MessageBox.Show("Not Saved!!");
-        //    }
-
-        //    sqlConnection.Close();
-        //}
 
         private void ShowButton_Click(object sender, EventArgs e)
         {
@@ -106,33 +82,49 @@ namespace MyWinApp
         private void SearchButton_Click(object sender, EventArgs e)
         {
             student.RollNo = rollNoTextBox.Text;
-            displayDataGridView.DataSource=_studentManager.SearchStudents(student);
+            displayDataGridView.DataSource= _studentManager.SearchStudents(student);
+            //AutoGenerateRowNumber(displayDataGridView);
+
         }
+        //public void AutoGenerateRowNumber(DataGridView gridView)
+        //{
+        //    if (gridView != null)
+        //    {
+        //        for (int i = 0; (i <= (gridView.Rows.Count - 2)); i++)
+        //        {
+        //            displayDataGridView.Columns.Insert()= string.Format((i + 1).ToString(), "0");
+        //        }
+        //    }
+        //}
 
         private void displayDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        //private void ShowStudents()
-        //{
-        //    commandString = @"SELECT * FROM StudentsView";
-        //    sqlCommand = new SqlCommand(commandString, sqlConnection);
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            student.RollNo = rollNoTextBox.Text;
+            student.Name = nameTextBox.Text;
+            student.Age = Convert.ToInt32(ageTextBox.Text);
+            student.Address = addressTextBox.Text;
+            student.DistrictID = Convert.ToInt32(districtComboBox.SelectedValue);
 
-        //    sqlConnection.Open();
+            int isExecuted = _studentManager.UpdateStudent(student);
+            if (isExecuted > 0)
+            {
+                MessageBox.Show("Updated");
+            }
+            else
+            {
+                MessageBox.Show("Not Updated\nRollNo not exist");
+            }
+        }
 
-        //    //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-        //    //sqlDataAdapter.SelectCommand = sqlCommand;
+        private void displayDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
 
-        //    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-        //    DataTable dataTable = new DataTable();
-        //    sqlDataAdapter.Fill(dataTable);
-
-        //    if (dataTable.Rows.Count > 0)
-        //        displayDataGridView.DataSource = dataTable;
-
-        //    sqlConnection.Close();
-
+        }
     }
     
 }

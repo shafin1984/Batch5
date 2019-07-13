@@ -15,7 +15,7 @@ namespace MyWinApp.Repository
     public class StudentRepository
     {
         Student student = new Student();
-        string connectionString = @"Server=PC-301-04\SQLEXPRESS; Database=StudentDB; Integrated Security=True";
+        string connectionString = @"Server=DESKTOP-IOCVPPE\SQLEXPRESS; Database=StudentDB; Integrated Security=True";
         private SqlConnection sqlConnection;
 
         private string commandString;
@@ -78,18 +78,23 @@ namespace MyWinApp.Repository
 
             sqlConnection.Open();
 
-            //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            //sqlDataAdapter.SelectCommand = sqlCommand;
-
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-
-            //if (dataTable.Rows.Count > 0)
-            //    displayDataGridView.DataSource = dataTable;
+            //dataTable.Columns["SL"].AutoIncrement = true;
 
             sqlConnection.Close();
             return dataTable;
+        }
+        public int UpdateStudent(Student student)
+        {
+            commandString = @"UPDATE Students SET Name='"+student.Name+"', Age="+student.Age+", Address='"+student.Address+"', DistrictID="+student.DistrictID+" where RollNo='"+student.RollNo+"'";
+            sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            int isExecuted;
+            isExecuted = sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+            return isExecuted;
         }
     }
 }

@@ -29,6 +29,10 @@ namespace MyWinApp.BLL
         {
             return _studentRepository.SearchStudents(student);
         }
+        public int UpdateStudent(Student student)
+        {
+            return _studentRepository.UpdateStudent(student);
+        }
 
     }
 }

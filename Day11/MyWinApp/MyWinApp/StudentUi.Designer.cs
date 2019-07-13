@@ -106,6 +106,7 @@
             this.EditButton.TabIndex = 0;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // ShowButton
             // 
@@ -143,12 +144,13 @@
             this.districtIDDataGridViewTextBoxColumn,
             this.districtDataGridViewTextBoxColumn});
             this.displayDataGridView.DataSource = this.studentBindingSource;
-            this.displayDataGridView.Location = new System.Drawing.Point(7, 20);
+            this.displayDataGridView.Location = new System.Drawing.Point(13, 19);
             this.displayDataGridView.Name = "displayDataGridView";
             this.displayDataGridView.ReadOnly = true;
             this.displayDataGridView.Size = new System.Drawing.Size(489, 169);
             this.displayDataGridView.TabIndex = 0;
             this.displayDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.displayDataGridView_CellContentClick);
+            this.displayDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.displayDataGridView_RowPostPaint);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -160,6 +162,7 @@
             // 
             // SL
             // 
+            this.SL.DataPropertyName = "1,2,3";
             this.SL.HeaderText = "SL";
             this.SL.Name = "SL";
             this.SL.ReadOnly = true;

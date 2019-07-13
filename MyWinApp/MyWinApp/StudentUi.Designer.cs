@@ -151,7 +151,7 @@
             // 
             // studentBindingSource
             // 
-            this.studentBindingSource.DataSource = typeof(MyWinApp.Models.Student);
+//            this.studentBindingSource.DataSource = typeof(MyWinApp.Models.Student);
             // 
             // groupBox1
             // 
